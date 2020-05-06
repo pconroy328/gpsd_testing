@@ -45,37 +45,49 @@ int main(int argc, char** argv)
                     fprintf( stderr, "GPS Device is there but there's no data to be read!  errno = %d\n", errno );
 
                 else {
-                    printf( " %f", (float) gpsData.ais.type );
-                    printf( " %f", (float) gpsData.ais.mmsi );
-                    printf( " %f", (float) gpsData.ais.repeat );
+                    puts( "gps data - ais structure" );
+                    printf( "type    %f\n", (float) gpsData.ais.type );
+                    printf( "mmsi     %f\n", (float) gpsData.ais.mmsi );
+                    printf( "repeat   %f\n", (float) gpsData.ais.repeat );
                     
-                    printf( " %f", (float) gpsData.attitude.heading );
-                    printf( " %f", (float) gpsData.attitude.yaw );
-                    printf( " %f", (float) gpsData.attitude.yaw_st );
-                    printf( " %f", (float) gpsData.attitude.pitch );
-                    printf( " %f", (float) gpsData.attitude.pitch_st );
-                    printf( " %f", (float) gpsData.attitude.roll );
-                    printf( " %f", (float) gpsData.attitude.roll_st );
-                    printf( " %f", (float) gpsData.attitude.acc_x );
-                    printf( " %f", (float) gpsData.attitude.gyro_x );
-                    printf( " %f", (float) gpsData.attitude.mag_st );
+                    puts( "gps data - attitude structure" );
+                    printf( "heading   %f\n", (float) gpsData.attitude.heading );
+                    printf( "yaw       %f\n", (float) gpsData.attitude.yaw );
+                    printf( "yaw_str   %c\n", gpsData.attitude.yaw_st );
+                    printf( "pitch     %f\n", (float) gpsData.attitude.pitch );
+                    printf( "pitch str %c\n", gpsData.attitude.pitch_st );
+                    printf( "roll      %f\n", (float) gpsData.attitude.roll );
+                    printf( "roll str  %c\n", gpsData.attitude.roll_st );
+                    printf( "acc_x     %f\n", (float) gpsData.attitude.acc_x );
+                    printf( "gyro_x    %f\n", (float) gpsData.attitude.gyro_x );
+                    printf( "mag str   %c\n", gpsData.attitude.mag_st );
                     
-                    printf( " %f", (float) gpsData.fix.epx );
-                    printf( " %f", (float) gpsData.fix.epy );
+                    puts( "gps data - fix structure" );
+                    printf( "long uncertainty   %f\n", (float) gpsData.fix.epx );
+                    printf( "lat uncertainty    %f\n", (float) gpsData.fix.epy );
+                    printf( "mode               %f\n", (float) gpsData.fix.mode );
+                    printf( "latitude           %f\n", (float) gpsData.fix.latitude );
+                    printf( "longtitude         %f\n", (float) gpsData.fix.longitude );
+                    printf( "speed              %f\n", (float) gpsData.fix.speed );
+                    printf( "track              %f\n", (float) gpsData.fix.track );
+                    printf( "climb              %f\n", (float) gpsData.fix.climb );
+                    printf( "speed uncertainty  %f\n", (float) gpsData.fix.eps );
                     
-                    printf( " %f", (float) gpsData.navdata.compass_deviation );
-                    printf( " %f", (float) gpsData.navdata.compass_heading );
-                    printf( " %f", (float) gpsData.navdata.compass_status );
-                    printf( " %f", (float) gpsData.navdata.crosstrack_error );
+                    puts( "gps data - navdata structure" );
+                    printf( "compass deviation %f\n", (float) gpsData.navdata.compass_deviation );
+                    printf( "compass heading   %f\n", (float) gpsData.navdata.compass_heading );
+                    printf( "compass status    %f\n", (float) gpsData.navdata.compass_status );
+                    printf( "crosstrack_error  %f\n", (float) gpsData.navdata.crosstrack_error );
                     
-                    printf( " %f", (float) gpsData.osc.delta );
+                    puts( "gps data - osc structure" );
+                    printf( "delta    %f\n", (float) gpsData.osc.delta );
                     
-                    printf( " %f", (float) gpsData.satellites_used );
-                    printf( " %f", (float) gpsData.satellites_visible );
-                    printf( " %f", (float) gpsData.skyview[0].PRN );
-                    printf( " %f", (float) gpsData.skyview[0].azimuth );
-                    printf( " %f", (float) gpsData.skyview[0].elevation );
-                    
+                    puts( "gps data - satellites and sjyview structure" );
+                    printf( "satellites used      %f\n", (float) gpsData.satellites_used );
+                    printf( "satellites visible   %f\n", (float) gpsData.satellites_visible );
+                    printf( "sat[0] PRN           %f\n", (float) gpsData.skyview[0].PRN );
+                    printf( "sat[0] azimuth       %f\n", (float) gpsData.skyview[0].azimuth );
+                    printf( "sat[0] elevation     %f\n", (float) gpsData.skyview[0].elevation );
                 }
             }
         }
