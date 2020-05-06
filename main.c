@@ -23,9 +23,11 @@
  */
 int main(int argc, char** argv) 
 {
+    puts( "Pass in Host string!" );
+    
     struct gps_data_t   gpsData;
     
-    int ret = gps_open( "gpsrv.local", "2947", &gpsData );
+    int ret = gps_open( argv[1], "2947", &gpsData );
     if (ret >= 0) {
         (void) gps_stream( &gpsData, (WATCH_ENABLE | WATCH_JSON), NULL );
 
@@ -46,9 +48,9 @@ int main(int argc, char** argv)
 
                 else {
                     puts( "gps data - ais structure" );
-                    printf( "type    %f\n", (float) gpsData.ais.type );
-                    printf( "mmsi     %f\n", (float) gpsData.ais.mmsi );
-                    printf( "repeat   %f\n", (float) gpsData.ais.repeat );
+                    printf( "type     %u\n", gpsData.ais.type );
+                    printf( "mmsi     %u\n", gpsData.ais.mmsi );
+                    printf( "repeat   %u\n", gpsData.ais.repeat );
                     
                     puts( "gps data - attitude structure" );
                     printf( "heading   %f\n", (float) gpsData.attitude.heading );
@@ -63,32 +65,39 @@ int main(int argc, char** argv)
                     printf( "mag str   %c\n", gpsData.attitude.mag_st );
                     
                     puts( "gps data - fix structure" );
-                    printf( "long uncertainty   %f\n", (float) gpsData.fix.epx );
-                    printf( "lat uncertainty    %f\n", (float) gpsData.fix.epy );
-                    printf( "mode               %f\n", (float) gpsData.fix.mode );
                     printf( "latitude           %f\n", (float) gpsData.fix.latitude );
+                    printf( "lat uncertainty    %f\n", (float) gpsData.fix.epy );
                     printf( "longtitude         %f\n", (float) gpsData.fix.longitude );
+                    printf( "long uncertainty   %f\n", (float) gpsData.fix.epx );
+                    printf( "mode               %f\n", (float) gpsData.fix.mode );
                     printf( "speed              %f\n", (float) gpsData.fix.speed );
-                    printf( "track              %f\n", (float) gpsData.fix.track );
-                    printf( "climb              %f\n", (float) gpsData.fix.climb );
                     printf( "speed uncertainty  %f\n", (float) gpsData.fix.eps );
+                    printf( "track              %f\n", (float) gpsData.fix.track );
+                    printf( "track uncertainty  %f\n", (float) gpsData.fix.epd );
+                    printf( "climb              %f\n", (float) gpsData.fix.climb );
+                    printf( "climb uncertainty  %f\n", (float) gpsData.fix.epc );
+                    printf( "altitude           %f\n", (float) gpsData.fix.altitude );
+                    printf( "alt uncertainty    %f\n", (float) gpsData.fix.epv );
                     
                     puts( "gps data - navdata structure" );
                     printf( "compass deviation %f\n", (float) gpsData.navdata.compass_deviation );
                     printf( "compass heading   %f\n", (float) gpsData.navdata.compass_heading );
                     printf( "compass status    %f\n", (float) gpsData.navdata.compass_status );
                     printf( "crosstrack_error  %f\n", (float) gpsData.navdata.crosstrack_error );
-                    
+#ifdef BUSTER                    
                     puts( "gps data - osc structure" );
                     printf( "delta    %f\n", (float) gpsData.osc.delta );
+#endif
                     
-                    puts( "gps data - satellites and sjyview structure" );
-                    printf( "satellites used      %f\n", (float) gpsData.satellites_used );
-                    printf( "satellites visible   %f\n", (float) gpsData.satellites_visible );
-                    printf( "sat[0] PRN           %f\n", (float) gpsData.skyview[0].PRN );
-                    printf( "sat[0] azimuth       %f\n", (float) gpsData.skyview[0].azimuth );
-                    printf( "sat[0] elevation     %f\n", (float) gpsData.skyview[0].elevation );
+                    puts( "gps data - satellites and skyview structure" );
+                    printf( "satellites used      %d\n", gpsData.satellites_used );
+                    printf( "satellites visible   %d\n", gpsData.satellites_visible );
+                    printf( "sat[0] PRN           %d\n", gpsData.skyview[0].PRN );
+                    printf( "sat[0] azimuth       %d\n", gpsData.skyview[0].azimuth );
+                    printf( "sat[0] elevation     %d\n", gpsData.skyview[0].elevation );
                 }
+                
+                sleep( 5 );
             }
         }
     }
