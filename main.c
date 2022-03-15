@@ -78,13 +78,15 @@ int main(int argc, char** argv)
                     printf( "climb uncertainty  %f\n", (float) gpsData.fix.epc );
                     printf( "altitude           %f\n", (float) gpsData.fix.altitude );
                     printf( "alt uncertainty    %f\n", (float) gpsData.fix.epv );
-                    
+              
+#ifndef STRETCH                    
                     puts( "gps data - navdata structure" );
                     printf( "compass deviation %f\n", (float) gpsData.navdata.compass_deviation );
                     printf( "compass heading   %f\n", (float) gpsData.navdata.compass_heading );
                     printf( "compass status    %f\n", (float) gpsData.navdata.compass_status );
                     printf( "crosstrack_error  %f\n", (float) gpsData.navdata.crosstrack_error );
-#ifdef BUSTER                    
+#endif                    
+#ifdef STRETCH                    
                     puts( "gps data - osc structure" );
                     printf( "delta    %f\n", (float) gpsData.osc.delta );
 #endif
