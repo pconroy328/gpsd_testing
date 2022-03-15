@@ -39,7 +39,7 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-DSTRETCH
 
 # CC Compiler Flags
 CCFLAGS=-DSTRETCH
