@@ -42,7 +42,7 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
+CCFLAGS=-DSTRETCH
 CXXFLAGS=
 
 # Fortran Compiler Flags
