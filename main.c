@@ -95,8 +95,8 @@ int main(int argc, char** argv)
                     printf( "satellites used      %d\n", gpsData.satellites_used );
                     printf( "satellites visible   %d\n", gpsData.satellites_visible );
                     printf( "sat[0] PRN           %d\n", gpsData.skyview[0].PRN );
-                    printf( "sat[0] azimuth       %d\n", gpsData.skyview[0].azimuth );
-                    printf( "sat[0] elevation     %d\n", gpsData.skyview[0].elevation );
+                    printf( "sat[0] azimuth       %f\n", gpsData.skyview[0].azimuth );
+                    printf( "sat[0] elevation     %f\n", gpsData.skyview[0].elevation );
                 }
                 
                 sleep( 5 );
